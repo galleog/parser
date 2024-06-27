@@ -1,0 +1,57 @@
+plugins {
+    id 'io.freefair.lombok' version '8.4' apply false
+    id 'io.spring.dependency-management' version '1.1.4' apply false
+}
+
+group = 'net.lcharge.galleog.parser'
+version = '1.0-SNAPSHOT'
+
+ext {
+    ver = [
+            lombok     : '1.18.30',
+            slf4j      : '2.0.12',
+            logback    : '1.5.0',
+            commonsLang: '3.14.0',
+            junit      : '5.9.1',
+            assert4j   : '3.25.3',
+            mockito    : '5.10.0'
+    ]
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.freefair.lombok'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = '17'
+
+    lombok {
+        version = "${ver.lombok}"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.junit:junit-bom:${ver.junit}"
+            mavenBom "org.mockito:mockito-bom:${ver.mockito}"
+        }
+
+        dependencies {
+            dependency "org.slf4j:slf4j-api:${ver.slf4j}"
+            dependency "ch.qos.logback:logback-classic:${ver.logback}"
+            dependency "org.apache.commons:commons-lang3:${ver.commonsLang}"
+            dependency "org.assertj:assertj-core:${ver.assert4j}"
+        }
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}

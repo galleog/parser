@@ -1,0 +1,7 @@
+apply plugin: 'java-library'
+
+description = 'parser-api'
+
+dependencies {
+    api 'org.apache.commons:commons-lang3'
+}

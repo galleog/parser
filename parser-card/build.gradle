@@ -1,0 +1,16 @@
+apply plugin: 'java-library'
+
+description = 'parser-card'
+
+dependencies {
+    api(
+            project(':parser-api'),
+            'org.slf4j:slf4j-api'
+    )
+
+    testImplementation(
+            'ch.qos.logback:logback-classic',
+            'org.junit.jupiter:junit-jupiter',
+            'org.assertj:assertj-core'
+    )
+}

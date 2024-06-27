@@ -1,0 +1,11 @@
+rootProject.name = 'parser'
+
+include 'parser-api'
+include 'parser-card'
+include 'parser-number'
+include 'parser-lib'
+
+project(':parser-api').projectDir = "$rootDir/parser-api" as File
+project(':parser-lib').projectDir = "$rootDir/parser-lib" as File
+project(':parser-card').projectDir = "$rootDir/parser-card" as File
+project(':parser-number').projectDir = "$rootDir/parser-number" as File
